@@ -10,14 +10,14 @@
   "files": [
     "src/**/*"
   ],
-  "homepage": "https://github.com/voicenter/umbraco-headless#readme",
+  "homepage": "https://github.com/voicenter-team/umbraco-headless#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voicenter/umbraco-headless.git"
+    "url": "git+https://github.com/voicenter-team/umbraco-headless.git"
   },
   "bugs": {
-    "url": "https://github.com/voicenter/umbraco-headless/issues"
+    "url": "https://github.com/voicenter-team/umbraco-headless/issues"
   },
   "scripts": {
     "playground": "cd playground && npm run dev"
