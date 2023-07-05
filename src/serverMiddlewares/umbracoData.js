@@ -1,9 +1,9 @@
 const { proceedInclude, proceedIgnore } = require('../helper/objectWorker')
 const { getByPath, getByContentType } = require('../helper/helper')
 
-export default function ({ umbracoData }) {
+export default function ({ umbracoData, getUmbracoDataMiddlewareAPIURI }) {
   this.addServerMiddleware({
-    path: '/get-umbraco-data',
+    path: getUmbracoDataMiddlewareAPIURI,
     handler: (req, res) => {
       if (req.method === 'POST') {
         const { include, ignore, type, pattern } = req.body

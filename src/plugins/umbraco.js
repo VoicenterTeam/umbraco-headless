@@ -1,17 +1,19 @@
 export default class JsonWorker {
     _namespace;
     _getUmbracoDataAPI;
+    _getUmbracoDataMiddlewareAPIURI;
 
-    constructor({namespace, getUmbracoDataAPI, site, axios}) {
+    constructor({namespace, getUmbracoDataAPI, getUmbracoDataMiddlewareAPIURI, site, axios}) {
         this._namespace = namespace;
         this._getUmbracoDataAPI = getUmbracoDataAPI;
+        this._getUmbracoDataMiddlewareAPIURI = getUmbracoDataMiddlewareAPIURI;
         this._site = site
         this._axios = axios;
     }
 
     _getDataFromMiddleware(fetch) {
       const {data} = this._axios.post(
-        '/get-umbraco-data',
+        this._getUmbracoDataMiddlewareAPIURI,
         fetch
       )
 
