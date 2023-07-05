@@ -32,7 +32,13 @@ export default class JsonWorker {
         return data
     }
 
-    async getNodeData(fetchObject) {
+    async getNodeData({ fetch, include, ignore }) {
+      const fetchObject = {
+        ...fetch,
+        include,
+        ignore
+      }
+
       if (process.env.NODE_ENV === 'production') {
         return await this._getFromAPI(fetchObject)
       } else {
