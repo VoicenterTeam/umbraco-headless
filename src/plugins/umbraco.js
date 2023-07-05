@@ -9,8 +9,17 @@ export default class JsonWorker {
         this._axios = axios;
     }
 
+    _getDataFromMiddleware(fetch) {
+      const {data} = this._axios.post(
+        '/get-umbraco-data',
+        fetch
+      )
+
+      return data
+    }
+
     _getFromAPI(fetch) {
-        return this._axios({
+        const {data} = this._axios({
             method: 'post',
             withCredentials: false,
             url: this._getUmbracoDataAPI,
@@ -19,11 +28,15 @@ export default class JsonWorker {
               site: this._site
             }
         })
+
+        return data
     }
 
     async getNodeData(fetchObject) {
-        const {data} = await this._getFromAPI(fetchObject)
-
-        return data;
+      if (process.env.NODE_ENV === 'production') {
+        return await this._getFromAPI(fetchObject)
+      } else {
+        return await this._getDataFromMiddleware(fetchObject)
+      }
     }
 }

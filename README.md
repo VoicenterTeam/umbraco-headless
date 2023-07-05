@@ -2,7 +2,7 @@
 Nuxt module that helps you to easily load your Umbraco data directly into your great Nuxt project.
 
 ## Setup:
-1. Install dependency by running `npm i @voicenter/umbraco-headless` or `yarn add @voicenter/umbraco-headless`
+1. Install dependency by running `npm i @voicenter-team/umbraco-headless` or `yarn add @voicenter-team/umbraco-headless`
 2. Configure your nuxt project by adding the following:
 
 ```js
@@ -10,7 +10,7 @@ Nuxt module that helps you to easily load your Umbraco data directly into your g
 {
     modules: [
         // ...
-        '@voicenter/umbraco-headless'
+        '@voicenter-team/umbraco-headless'
     ]
 }
 ```

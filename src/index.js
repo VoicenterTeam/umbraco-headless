@@ -4,6 +4,7 @@ import setupRoutes from './router';
 import setupStore from './store';
 import setupPlugin from './plugins';
 import setupTrailingMiddleware from './serverMiddlewares/trailing';
+import umbracoDataMiddleware from './serverMiddlewares/umbracoData';
 import setupRedirects from './serverMiddlewares/redirects';
 
 export default async function (moduleOptions) {
@@ -22,6 +23,8 @@ export default async function (moduleOptions) {
   if (options.trailingSlashRedirect === true) {
     setupTrailingMiddleware.call(this, options)
   }
+
+  umbracoDataMiddleware.call(this, options)
 }
 
 module.exports.meta = require('../package.json');

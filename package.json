@@ -1,5 +1,5 @@
 {
-  "name": "@voicenter/umbraco-headless",
+  "name": "@voicenter-team/umbraco-headless",
   "description": "Nuxt module that helps you to easily load your Umbraco data directly into your great Nuxt project.",
   "author": {
     "name": "bohdan",
