@@ -1,50 +1,58 @@
 export default class JsonWorker {
-    _namespace;
-    _getUmbracoDataAPI;
-    _getUmbracoDataMiddlewareAPIURI;
+  _namespace;
+  _getUmbracoDataAPI;
+  _getUmbracoDataMiddlewareAPIURI;
 
-    constructor({namespace, getUmbracoDataAPI, getUmbracoDataMiddlewareAPIURI, site, axios}) {
-        this._namespace = namespace;
-        this._getUmbracoDataAPI = getUmbracoDataAPI;
-        this._getUmbracoDataMiddlewareAPIURI = getUmbracoDataMiddlewareAPIURI;
-        this._site = site
-        this._axios = axios;
-    }
+  constructor({namespace, getUmbracoDataAPI, getUmbracoDataMiddlewareAPIURI, site, axios}) {
+    this._namespace = namespace;
+    this._getUmbracoDataAPI = getUmbracoDataAPI;
+    this._getUmbracoDataMiddlewareAPIURI = getUmbracoDataMiddlewareAPIURI;
+    this._site = site
+    this._axios = axios;
+  }
 
-    _getDataFromMiddleware(fetch) {
-      const {data} = this._axios.post(
-        this._getUmbracoDataMiddlewareAPIURI,
-        fetch
-      )
+  async _getDataFromMiddleware(fetch) {
+    console.log('_getDataFromMiddleware!')
+    const {data} = await this._axios({
+      method: 'post',
+      withCredentials: false,
+      url: this._getUmbracoDataMiddlewareAPIURI,
+      data: fetch
+    })
 
-      return data
-    }
+    console.log('_getDataFromMiddleware, result of getting the data:', Object.keys(data))
 
-    _getFromAPI(fetch) {
-        const {data} = this._axios({
-            method: 'post',
-            withCredentials: false,
-            url: this._getUmbracoDataAPI,
-            data: {
-              ...fetch,
-              site: this._site
-            }
-        })
+    return data
+  }
 
-        return data
-    }
-
-    async getNodeData({ fetch, include, ignore }) {
-      const fetchObject = {
+  async _getFromAPI(fetch) {
+    const {data} = await this._axios({
+      method: 'post',
+      withCredentials: false,
+      url: this._getUmbracoDataAPI,
+      data: {
         ...fetch,
-        include,
-        ignore
+        site: this._site
       }
+    })
 
-      if (process.env.NODE_ENV === 'production') {
-        return await this._getFromAPI(fetchObject)
-      } else {
-        return await this._getDataFromMiddleware(fetchObject)
-      }
+    return data
+  }
+
+  async getNodeData({ fetch, include, ignore }) {
+    const fetchObject = {
+      ...fetch,
+      include,
+      ignore
     }
+    console.log('getNodeData', fetchObject)
+    console.log('process.client', process.client)
+    if (process.client) {
+      console.log('getNodeData -> _getFromAPI')
+      return await this._getFromAPI(fetchObject)
+    } else {
+      console.log('getNodeData -> _getDataFromMiddleware')
+      return await this._getDataFromMiddleware(fetchObject)
+    }
+  }
 }
