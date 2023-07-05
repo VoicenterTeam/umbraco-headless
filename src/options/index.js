@@ -3,10 +3,6 @@ import {existsSync} from 'fs'
 import {join} from 'path'
 
 export const defaults = {
-  getUmbracoDataMiddlewareAPIURI: {
-    default: '/get-umbraco-data',
-    required: false
-  },
   getUmbracoDataAPI: {
     default: null,
     required: true,
