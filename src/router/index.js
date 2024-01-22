@@ -19,7 +19,13 @@ export default function setupRoutes(options) {
         componentName = 'index.vue';
       }
 
-      const path = options.trailingSlashRedirect ? removeTrailingSlash(url.url) : url.url
+      const pageUrl = options.prefix
+        ? options.prefix + url.url
+        : url.url
+
+      const path = options.trailingSlashRedirect
+        ? removeTrailingSlash(pageUrl)
+        : pageUrl
 
       const route = {
         name: url.nodeID,
