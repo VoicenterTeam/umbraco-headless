@@ -27,6 +27,10 @@ export const defaults = {
     default: null,
     required: true
   },
+  prefix: {
+    default: '',
+    required: false
+  },
   site: {
     default: null,
     required: true

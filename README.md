@@ -18,18 +18,18 @@ Nuxt module that helps you to easily load your Umbraco data directly into your g
 In order to configure the module - create `umbraco-headless.config.js` file in the root of your Nuxt project.
 The following options can be specified while setting the module:
 
-| Option                            | Description                                                                                                                                                 | Default           | Required |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------| :---------------: | :------: |
-| getUmbracoDataAPI                 | An URI where plugin will do a POST requests in order to fetch Umbraco Data                                                                                  | -                 | true     |
-| generateUmbracoDataAPI            | An URI where plugin will do a POST requests in order to fetch sitemap.xml robots.txt, umbracodata.json to generate files                                    | -                 | true     |
-| site                              | The name of the website                                                                                                                                     | -                 | true     |
-| trailingSlashRedirect             | The value makes a 301 redirection to a non trailing slash URL                                                                                               | false             | false    |
-| prefix                            | The value that if passed will generate routes with that prefix, example: if prefix "es", then route as "/about-us/contacts" will be "/es/about-us/contacts" | false             | false    |
-| redirects                         | -                                                                                                                                                           | -                 | false    |
-| redirects.enable                  | If to enable 301 redirects                                                                                                                                  | false             | -        |
-| redirects.redirectFolderName      | Name of the Umbraco Data content type where to find redirects (plugin will check children's `oldUrl`/`newUrl` key pairs)                                    | redirectFolder    | -        |
+| Option                            | Description                                                                                                                                                 |      Default      | Required |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------:| :------: |
+| getUmbracoDataAPI                 | An URI where plugin will do a POST requests in order to fetch Umbraco Data                                                                                  |         -         | true     |
+| generateUmbracoDataAPI            | An URI where plugin will do a POST requests in order to fetch sitemap.xml robots.txt, umbracodata.json to generate files                                    |         -         | true     |
+| site                              | The name of the website                                                                                                                                     |         -         | true     |
+| trailingSlashRedirect             | The value makes a 301 redirection to a non trailing slash URL                                                                                               |       false       | false    |
+| prefix                            | The value that if passed will generate routes with that prefix, example: if prefix "es", then route as "/about-us/contacts" will be "/es/about-us/contacts" |        ''         | false    |
+| redirects                         | -                                                                                                                                                           |         -         | false    |
+| redirects.enable                  | If to enable 301 redirects                                                                                                                                  |       false       | -        |
+| redirects.redirectFolderName      | Name of the Umbraco Data content type where to find redirects (plugin will check children's `oldUrl`/`newUrl` key pairs)                                    |  redirectFolder   | -        |
 | redirects.rootChildrenUmbracoPath | Path of the children content                                                                                                                                | SiteData.children | -        |
-| redirects.enableInDevelopment     | Whenever to do redirects in development mode                                                                                                                | false             | -        |
+| redirects.enableInDevelopment     | Whenever to do redirects in development mode                                                                                                                |       false       | -        |
 
 Make sure you have all the created components in your pages folder. But if you don't have all the needed components - the plugin will setup the index.vue component for all the missing components routes.
 
