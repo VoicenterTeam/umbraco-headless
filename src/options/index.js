@@ -80,7 +80,7 @@ function validateConfig(config) {
       ? value.default
       : config[key]
 
-    if (invalidConfigParam(mergedConfig[key])) {
+    if (defaults[key].required && invalidConfigParam(mergedConfig[key])) {
       invalid.push(key)
     }
   })
