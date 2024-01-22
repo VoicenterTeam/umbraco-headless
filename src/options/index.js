@@ -53,7 +53,7 @@ export const defaults = {
 const NUXT_OPTIONS_TO_SYNC = ['rootDir', 'store'];
 
 function invalidConfigParam(param) {
-  return param === null || param === undefined || param === ''
+  return param === null || param === undefined
 }
 
 function readConfigFile(rootDir) {
