@@ -1,7 +1,7 @@
 const {JSONPath} = require('jsonpath-plus');
 
 export function extendWithParentData({urlList, SiteData}, path) {
-    const NodeData = JSON.parse(JSON.stringify(SiteData));
+    const NodeData = SiteData;
     const pathArray = path.split('.');
     let finalData = {};
     let pathString = '';
