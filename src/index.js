@@ -22,6 +22,10 @@ export default async function (moduleOptions) {
   if (options.trailingSlashRedirect === true) {
     setupTrailingMiddleware.call(this, options)
   }
+
+  console.log('Initialized headless, cleaning up')
+
+  delete options.umbracoData
 }
 
 module.exports.meta = require('../package.json');
