@@ -24,8 +24,6 @@ export default async function (moduleOptions) {
   }
 
   console.log('Initialized headless, cleaning up')
-
-  delete options.umbracoData
 }
 
 module.exports.meta = require('../package.json');
